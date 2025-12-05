@@ -1,43 +1,55 @@
-# Starfish Evolution Simulator
 
-A Python simulation demonstrating natural selection in a fictional starfish population over 10 generations.
+"""Simulates natural selection in the fictional Starfish population."""
+import random
+# Starting population with each trait variation.
+small_starfishes = 100
+big_starfishes = 100
+generation = 0
 
-## What It Does
-- Simulates two populations: small starfish and big starfish
-- Small starfish have lower chance of being spotted by predators (20% vs 50%)
-- Each generation, survivors reproduce and traits pass to offspring
-- Shows how survival advantages lead to population changes over time
-
-## How It Works
-1. Starts with 100 small and 100 big starfish
-2. Each generation:
-   - Predators hunt (big starfish more likely to be caught)
-   - Survivors reproduce (0-3 babies each)
-   - Babies become the next generation
-3. Runs for 10 generations or until extinction
-
-## Sample Output
-```
-Generation-1
-245 small Starfishes
-52 big Starfishes
-
-Generation-2
-589 small Starfishes
-18 big Starfishes
-...
-```
-
-## Concepts Demonstrated
-- Natural selection and evolution
-- Predator-prey dynamics
-- Genetic trait inheritance
-- Random simulation with probability
-
-## How to Run
-```bash
-python starfish_evolution.py
-```
-
-## About
-Created while learning Python and exploring evolutionary biology concepts through code.
+while generation < 10 and (small_starfishes > 0 or big_starfishes > 0):
+    for neebler in range(small_starfishes):
+    # Low chance of being spotted by predators since they're small.
+       chance_of_being_spotted = random.randint(0, 4)
+       if chance_of_being_spotted == 4:
+            small_starfishes = small_starfishes - 1
+    for starfished in range(big_starfishes):
+        chance_of_being_spotted = random.randint(0, 1)
+        if chance_of_being_spotted == 1:
+            big_starfishes = big_starfishes - 1
+    baby_small_starfishes = 0
+    for starfish in range(small_starfishes):
+    # Smallness trait gets passed to their babies.
+        num_babies = random.randint(0, 3)
+        baby_small_starfishes = baby_small_starfishes + num_babies
+    baby_big_starfishes = 0
+    for starfishes in range(big_starfishes):
+        num_big_babies = random.randint(0,3)
+        baby_big_starfishes = baby_big_starfishes + num_big_babies
+# Babies become the starting population of the next generation.
+    small_starfishes = baby_small_starfishes
+    big_starfishes = baby_big_starfishes
+    generation = generation + 1
+    if generation == 1:
+        print("Generation-1")
+    elif generation == 2:
+        print("Generation-2")
+    elif generation == 3:
+        print("Generation-3")
+    elif generation == 4:
+        print("Generation-4")
+    elif generation == 5:
+        print("Generation-5")
+    elif generation == 6:
+        print("Generation-6")
+    elif generation == 7:
+        print("Generation-7")
+    elif generation == 8:
+        print("Generation-8")
+    elif generation == 9:
+        print("Generation-9")
+    else:
+        print("Generation-10")
+    print(str(small_starfishes) + " small Starfishes")
+    print(str(big_starfishes) + " big Starfishes")
+    if small_starfishes == 0 and big_starfishes == 0:
+            print("The population ended!")
